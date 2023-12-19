@@ -1,5 +1,5 @@
 // MovingObjects.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//Вам нужно реализовать шаблонную функцию, которая перемещает содержимое одного std::vector в другой.
+//Р’Р°Рј РЅСѓР¶РЅРѕ СЂРµР°Р»РёР·РѕРІР°С‚СЊ С€Р°Р±Р»РѕРЅРЅСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РїРµСЂРµРјРµС‰Р°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РѕРґРЅРѕРіРѕ std::vector РІ РґСЂСѓРіРѕР№.
 
 #include <iostream>
 #include <vector>
@@ -8,11 +8,7 @@
 template <typename T>
 void move_vectors(std::vector<T>& source, std::vector<T>& destination) {
     
-    destination.insert(destination.end(),
-        std::make_move_iterator(source.begin()),
-        std::make_move_iterator(source.end()));
-
-    source.clear();
+    destination = std::move(source);
 }
 
 int main() {
@@ -21,7 +17,7 @@ int main() {
 
     move_vectors(one, two);
 
-    //one пуст содержимое перемещено в two
+  
     std::cout << "Vector one size: " << one.size() << std::endl;
     std::cout << "Vector two size: " << two.size() << std::endl;
 
